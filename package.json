@@ -1,5 +1,5 @@
 {
-  "name": "metricon",
+  "name": "sauron-eye",
   "version": "1.0.0",
   "description": "Browser metrics. Open source. Made simple.",
   "main": "index.js",
