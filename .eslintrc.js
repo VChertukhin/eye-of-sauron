@@ -2,7 +2,6 @@
 
 module.exports = {
     root: true,
-    files: [`**/*.ts`, `**/*.tsx`],
     plugins: [
         '@typescript-eslint',
         'jest',
@@ -26,7 +25,14 @@ module.exports = {
         warnOnUnsupportedTypeScriptVersion: false,
     },
     ignorePatterns: [
-        'node_modules/*', 'dist/*'
+        'node_modules/*',
+        'dist/*',
+        'lib/*',
+    ],
+    overrides: [
+        {
+            files: [`**/*.ts`, `**/*.tsx`],
+        },
     ],
     rules: {
         semi: [2, 'always'],
