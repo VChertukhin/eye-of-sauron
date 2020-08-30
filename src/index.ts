@@ -15,31 +15,33 @@ const voidMetrics: MetricsBuffer = {
     mouseClickBuffer: [],
 };
 
-// metrics Buffer
-const metricsBuffer = new Observable<MetricsBuffer>(voidMetrics);
-// use event observables as atoms for metrics buffer and
-// at the same time as state with last event of atom type
-const mouseMoveAtom = new Observable<MouseMoveEvent | null>(null);
-const mouseClickAtom = new Observable<MouseClickEvent | null>(null);
+export default function eyeOfSauron() {
+    // metrics Buffer
+    const metricsBuffer = new Observable<MetricsBuffer>(voidMetrics);
+    // use event observables as atoms for metrics buffer and
+    // at the same time as state with last event of atom type
+    const mouseMoveAtom = new Observable<MouseMoveEvent | null>(null);
+    const mouseClickAtom = new Observable<MouseClickEvent | null>(null);
 
-// prevent SSR break
-if (typeof window !== 'undefined') {
-    // create canvas to show all tracked events on page
-    if (VISUALISE_EVENTS) {
-        initEventsCanvas();
+    // prevent SSR break
+    if (typeof window !== 'undefined') {
+        // create canvas to show all tracked events on page
+        if (VISUALISE_EVENTS) {
+            initEventsCanvas();
+        }
+
+        initMouseMoveHandler(mouseMoveAtom, metricsBuffer);
+        initMouseClickHandler(mouseClickAtom, metricsBuffer);
+
+        // periodicaly send metrics and drop atoms
+        setInterval(
+            () => {
+                // send metrics buffer to some service
+                sendMetricsBufferService(metricsBuffer.value);
+                // drop buffer
+                metricsBuffer.value = voidMetrics;
+            },
+            SEND_AND_DROP_INTERVAL,
+        );
     }
-
-    initMouseMoveHandler(mouseMoveAtom, metricsBuffer);
-    initMouseClickHandler(mouseClickAtom, metricsBuffer);
-
-    // periodicaly send metrics and drop atoms
-    setInterval(
-        () => {
-            // send metrics buffer to some service
-            sendMetricsBufferService(metricsBuffer.value);
-            // drop buffer
-            metricsBuffer.value = voidMetrics;
-        },
-        SEND_AND_DROP_INTERVAL,
-    );
 }
