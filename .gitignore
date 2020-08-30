@@ -1,2 +1,5 @@
 dist
+lib
+!lib/types.d.ts
 node_modules
+*.txt
