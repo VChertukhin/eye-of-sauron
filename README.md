@@ -1,5 +1,10 @@
 # Eye of Sauron
 
+[![npm][npm]][npm-url]
+
+[npm]: https://img.shields.io/npm/v/eye-of-sauron.svg
+[npm-url]: https://www.npmjs.com/package/eye-of-sauron
+
 <p align="center">
   <img src="https://vignette.wikia.nocookie.net/lotr/images/5/5c/Saurontheye.jpg/revision/latest?cb=20070311020921">
 </p>
