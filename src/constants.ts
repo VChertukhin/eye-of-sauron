@@ -1,3 +1,6 @@
+// basic consts describing working mode (development/production)
+export const __DEV__ = process.env.NODE_ENV === 'development';
+export const __PROD__ = !__DEV__;
 // defines mininmal time limit (in ms) atoms (state parts) will be cleaned and metrics buffer
 // will be send to some service
 export const SEND_AND_DROP_INTERVAL = 2000;
@@ -12,5 +15,4 @@ export enum DEBOUNCE_INTERVAL {
 // test canvas id (for event visualisation)
 export const CANVAS_ID = 'metricon-canvas';
 // show all tracked events visualisation in the canvas on the top of the page
-// TODO: add condition depending on process.env.NODE_ENV
-export const VISUALISE_EVENTS = true;
+export const VISUALISE_EVENTS = __DEV__ || process.env.VISUALISE_EVENTS === 'true';
