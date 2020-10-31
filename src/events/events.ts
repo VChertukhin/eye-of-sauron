@@ -9,11 +9,12 @@ import Observable from '@observable';
 import { drawMouseClickService, drawMouseMoveService } from '@services/services';
 import { debounce } from '@utils/utils';
 
+type StopHandlerFunction = () => void;
 
 export const initMouseMoveHandler = (
     mouseMoveAtom: Observable<MouseMoveEvent | null>,
     metricsBuffer: Observable<MetricsBuffer>,
-) => {
+): StopHandlerFunction => {
     const handleMouseMove = debounce<MouseEvent>((event: MouseEvent) => {
         const { clientX, clientY } = event;
 
@@ -53,7 +54,7 @@ export const initMouseMoveHandler = (
 export const initMouseClickHandler = (
     mouseClickAtom: Observable<MouseClickEvent | null>,
     metricsBuffer: Observable<MetricsBuffer>,
-) => {
+): StopHandlerFunction => {
     const handleMouseClick = debounce<MouseEvent>((event: MouseEvent) => {
         const { clientX, clientY } = event;
 

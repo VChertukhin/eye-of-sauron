@@ -31,8 +31,8 @@ export default function eyeOfSauron() {
             initEventsCanvas();
         }
 
-        initMouseMoveHandler(mouseMoveAtom, metricsBuffer);
-        initMouseClickHandler(mouseClickAtom, metricsBuffer);
+        const stopMouseMoveHandler = initMouseMoveHandler(mouseMoveAtom, metricsBuffer);
+        const stopClickHandler = initMouseClickHandler(mouseClickAtom, metricsBuffer);
 
         // periodicaly send metrics and drop atoms
         setInterval(
@@ -44,5 +44,20 @@ export default function eyeOfSauron() {
             },
             SEND_AND_DROP_INTERVAL,
         );
+
+        // add ability to unsubscribe from events
+        (window as any).eyeOfSauron = {
+            ...(window as any)?.eyeOfSauron,
+            stop: () => {
+                [stopMouseMoveHandler, stopClickHandler].map(handler => handler());
+            }
+        };
     }
 }
+
+// make it available globaly
+(window as any).eyeOfSauron = {
+    ...(window as any)?.eyeOfSauron,
+    init: eyeOfSauron,
+    stop: () => { },
+};
