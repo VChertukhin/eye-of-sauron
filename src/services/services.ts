@@ -1,11 +1,11 @@
-import { CANVAS_ID } from '../constants';
+import { CANVAS_ID } from '@constants';
 import {
     MetricsBuffer,
     Position,
     MousePosition,
     MouseMoveEvent,
     MouseClickEvent,
-} from '../interfaces/interfaces';
+} from '@interfaces/interfaces';
 
 export const sendMetricsBufferService = (metrics: MetricsBuffer): void => console.log(metrics);
 

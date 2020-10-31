@@ -1,3 +1,3 @@
-import eyeOfSauron from './index';
+import eyeOfSauron from '@/index';
 
 eyeOfSauron();

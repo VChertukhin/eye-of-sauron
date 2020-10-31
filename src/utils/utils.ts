@@ -1,4 +1,4 @@
-import { DEBOUNCE_INTERVAL, CANVAS_ID } from '../constants';
+import { DEBOUNCE_INTERVAL, CANVAS_ID } from '@constants';
 
 /**
  * given callback will be invoked if only at least debounce interval (in ms)

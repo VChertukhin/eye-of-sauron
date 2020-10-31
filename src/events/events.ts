@@ -1,13 +1,13 @@
-import { DEBOUNCE_INTERVAL, VISUALISE_EVENTS } from '../constants';
+import { DEBOUNCE_INTERVAL, VISUALISE_EVENTS } from '@constants';
 import {
     MouseMoveEvent,
     MouseClickEvent,
     Events,
     MetricsBuffer,
-} from '../interfaces/interfaces';
-import Observable from '../observable';
-import { drawMouseClickService, drawMouseMoveService } from '../services/services';
-import { debounce } from '../utils/utils';
+} from '@interfaces/interfaces';
+import Observable from '@observable';
+import { drawMouseClickService, drawMouseMoveService } from '@services/services';
+import { debounce } from '@utils/utils';
 
 
 export const initMouseMoveHandler = (

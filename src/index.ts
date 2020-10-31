@@ -1,13 +1,14 @@
-import { SEND_AND_DROP_INTERVAL, VISUALISE_EVENTS } from './constants';
+import { SEND_AND_DROP_INTERVAL, VISUALISE_EVENTS } from '@constants';
 import {
     MetricsBuffer,
     MouseMoveEvent,
     MouseClickEvent,
-} from './interfaces/interfaces';
-import Observable from './observable';
-import { initMouseMoveHandler, initMouseClickHandler } from './events/events';
-import { sendMetricsBufferService } from './services/services';
-import { initEventsCanvas } from './utils/utils';
+} from '@interfaces/interfaces';
+
+import Observable from '@observable';
+import { initMouseMoveHandler, initMouseClickHandler } from '@events/events';
+import { sendMetricsBufferService } from '@services/services';
+import { initEventsCanvas } from '@utils/utils';
 
 const voidMetrics: MetricsBuffer = {
     start: Date.now(),
