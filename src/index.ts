@@ -8,7 +8,7 @@ import {
 import Observable from '@observable';
 import { initMouseMoveHandler, initMouseClickHandler } from '@events/events';
 import { sendMetricsBufferService } from '@services/services';
-import { initEventsCanvas } from '@utils/utils';
+import { initEventsCanvas, extendEyeOfSauronGlobally } from '@utils/utils';
 
 const voidMetrics: MetricsBuffer = {
     start: Date.now(),
@@ -46,18 +46,16 @@ export default function eyeOfSauron() {
         );
 
         // add ability to unsubscribe from events
-        (window as any).eyeOfSauron = {
-            ...(window as any)?.eyeOfSauron,
+        extendEyeOfSauronGlobally({
             stop: () => {
                 [stopMouseMoveHandler, stopClickHandler].map(handler => handler());
             }
-        };
+        });
     }
 }
 
 // make it available globaly
-(window as any).eyeOfSauron = {
-    ...(window as any)?.eyeOfSauron,
+extendEyeOfSauronGlobally({
     init: eyeOfSauron,
-    stop: () => { },
-};
+    stop: () => { }, /* eslint-disable-line @typescript-eslint/no-empty-function */
+});

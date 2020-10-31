@@ -43,3 +43,12 @@ export function initEventsCanvas(): void {
     // resize the canvas to fill browser window dynamically
     window.addEventListener('resize', fitCanvasToBodySize);
 }
+
+export const extendEyeOfSauronGlobally = (params: any): void => {
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
+    (window as any).eyeOfSauron = {
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-member-access */
+        ...(window as any)?.eyeOfSauron,
+        ...params,
+    };
+};
