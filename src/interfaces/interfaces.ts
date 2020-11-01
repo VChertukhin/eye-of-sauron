@@ -7,6 +7,11 @@ export interface Config {
     VISUALISE_EVENTS?: boolean;
 }
 
+export interface EyeOfSauron {
+    config?: Config;
+    [key: string]: any;
+}
+
 export type Position = {
     x: number;
     y: number;

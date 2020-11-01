@@ -1,5 +1,5 @@
 import { DEBOUNCE_INTERVAL, CANVAS_ID } from '@constants';
-import { Config } from '@interfaces/interfaces';
+import { Config, EyeOfSauron } from '@interfaces/interfaces';
 
 /**
  * given callback will be invoked if only at least debounce interval (in ms)
@@ -52,7 +52,7 @@ export function initEventsCanvas(): void {
 
 export const getConfig = (): Config => window?.eyeOfSauron?.config ?? {};
 
-export const extendEyeOfSauronGlobally = (params: { [key: string]: any }): void => {
+export const extendEyeOfSauronGlobally = (params: EyeOfSauron): void => {
     window.eyeOfSauron = {
         ...(window.eyeOfSauron ?? {}),
         ...params,
