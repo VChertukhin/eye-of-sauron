@@ -1,4 +1,5 @@
 import { DEBOUNCE_INTERVAL, CANVAS_ID } from '@constants';
+import { Config } from '@interfaces/interfaces';
 
 /**
  * given callback will be invoked if only at least debounce interval (in ms)
@@ -49,11 +50,11 @@ export function initEventsCanvas(): void {
     });
 }
 
-export const extendEyeOfSauronGlobally = (params: any): void => {
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
-    (window as any).eyeOfSauron = {
-        /* eslint-disable-next-line @typescript-eslint/no-unsafe-member-access */
-        ...(window as any)?.eyeOfSauron,
+export const getConfig = (): Config => window?.eyeOfSauron?.config ?? {};
+
+export const extendEyeOfSauronGlobally = (params: { [key: string]: any }): void => {
+    window.eyeOfSauron = {
+        ...(window.eyeOfSauron ?? {}),
         ...params,
     };
 };

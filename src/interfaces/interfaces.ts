@@ -1,3 +1,12 @@
+import { DEBOUNCE_INTERVAL } from '@constants';
+
+export interface Config {
+    SEND_AND_DROP_INTERVAL?: number;
+    DEBOUNCE_INTERVAL?: { [key in keyof typeof DEBOUNCE_INTERVAL]: number },
+    CANVAS_ID?: string;
+    VISUALISE_EVENTS?: boolean;
+}
+
 export type Position = {
     x: number;
     y: number;
@@ -12,7 +21,7 @@ export enum Events {
 
 type EventPayload = {
     at: number; // Date.now()
-    position: MousePosition; 
+    position: MousePosition;
 };
 
 type MouseEvent = {
