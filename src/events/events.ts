@@ -6,7 +6,7 @@ import {
     MetricsBuffer,
 } from '@interfaces/interfaces';
 import Observable from '@observable';
-import { drawMouseClickService, drawMouseMoveService } from '@services/services';
+import { DrawServices } from '@services/services';
 import { debounce } from '@utils/utils';
 
 type StopHandlerFunction = () => void;
@@ -45,7 +45,7 @@ export const initMouseMoveHandler = (
     });
     if (VISUALISE_EVENTS) {
         // draw mouse move visualisation
-        mouseMoveAtom.subscribe((newMouseMove: MouseMoveEvent) => drawMouseMoveService(newMouseMove));
+        mouseMoveAtom.subscribe((newMouseMove: MouseMoveEvent) => DrawServices.drawMouseMove(newMouseMove));
     }
 
     return () => window.removeEventListener('mousemove', handleMouseMove);
@@ -85,7 +85,7 @@ export const initMouseClickHandler = (
     });
     if (VISUALISE_EVENTS) {
         // draw mouse click visualisation
-        mouseClickAtom.subscribe((newMouseClick: MouseClickEvent) => drawMouseClickService(newMouseClick));
+        mouseClickAtom.subscribe((newMouseClick: MouseClickEvent) => DrawServices.drawMouseClick(newMouseClick));
     }
 
     return () => window.removeEventListener('click', handleMouseClick);

@@ -7,7 +7,7 @@ import {
 
 import Observable from '@observable';
 import { initMouseMoveHandler, initMouseClickHandler } from '@events/events';
-import { sendMetricsBufferService } from '@services/services';
+import { SendServices } from '@services/services';
 import { initEventsCanvas, extendEyeOfSauronGlobally } from '@utils/utils';
 
 const voidMetrics: MetricsBuffer = {
@@ -38,7 +38,7 @@ export default function eyeOfSauron() {
         setInterval(
             () => {
                 // send metrics buffer to some service
-                sendMetricsBufferService(metricsBuffer.value);
+                SendServices.sendMetricsBufferConsole(metricsBuffer.value);
                 // drop buffer
                 metricsBuffer.value = voidMetrics;
             },
