@@ -42,6 +42,11 @@ export function initEventsCanvas(): void {
     fitCanvasToBodySize();
     // resize the canvas to fill browser window dynamically
     window.addEventListener('resize', fitCanvasToBodySize);
+    // add method to clean canvas
+    const ctx = canvas.getContext('2d');
+    extendEyeOfSauronGlobally({
+        clearCanvas: () => ctx?.clearRect(0, 0, canvas.width, canvas.height)
+    });
 }
 
 export const extendEyeOfSauronGlobally = (params: any): void => {
