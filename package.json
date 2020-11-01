@@ -1,9 +1,14 @@
 {
   "name": "eye-of-sauron",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Browser metrics. Open source. Made simple.",
-  "main": "./dist/index.js",
-  "types": "./dist/types.d.ts",
+  "keywords": [
+    "metrics",
+    "browser metrics",
+    "custom metrics"
+  ],
+  "main": "./lib/index.js",
+  "types": "./lib/types.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --mode development",
