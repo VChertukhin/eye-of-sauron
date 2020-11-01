@@ -23,8 +23,11 @@ export namespace SendServices {
 
 /** services related to drawing on screen in canvas */
 export namespace DrawServices {
-    /** common canvas for drawing methods */
-    const canvas = document.getElementById(CANVAS_ID) as HTMLCanvasElement;
+    /**
+     * may return null at app start so we should get later
+     * @returns {HTMLCanvasElement}
+     */
+    const getCanvas = () => document.getElementById(CANVAS_ID) as HTMLCanvasElement;
     /**
      * return absolute position on page (correct mouse coordinates
      * relatively window with body element position)
@@ -49,6 +52,7 @@ export namespace DrawServices {
         let lastMove: MousePosition | null = null;
 
         return (mouseMove: MouseMoveEvent) => {
+            const canvas = getCanvas();
             const { x, y } = getPositionWithScroll(mouseMove.payload.position);
 
             if (lastMove) {
@@ -66,6 +70,7 @@ export namespace DrawServices {
     export const drawMouseMove = getDrawMouseMove();
 
     export const drawMouseClick = (mouseClick: MouseClickEvent): void => {
+        const canvas = getCanvas();
         const { x, y } = getPositionWithScroll(mouseClick.payload.position);
 
         const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
