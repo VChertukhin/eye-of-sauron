@@ -1,6 +1,6 @@
 {
   "name": "eye-of-sauron",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Browser metrics. Open source. Made simple.",
   "main": "./dist/index.js",
   "types": "./dist/types.d.ts",
